@@ -2,9 +2,13 @@
 Javascript Inheritance -- in a single function. Better than what you've seen elsewhere. Just add extends.js to your shims, or simply paste it into your code:
 
         Function.prototype.extends = function (o) {
-            this.prototype = Object.create(o.prototype);
+            var proto = this.prototype, extending = o.prototype;
+            Object.setPrototypeOf(proto, extending);
             this.prototype.super = function () {
-                o.prototype.constructor.apply(this, arguments);
+                var fn = proto.super;
+                delete proto.super;
+                extending.constructor.apply(this, arguments);
+                proto.super = fn;
             };
         };
 
