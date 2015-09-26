@@ -19,8 +19,44 @@ Javascript Inheritance -- in a single function. Better than what you've seen els
         return this.width * this.height; 
     }
     
+    // give Squares access to Polygon shared properties & this.super() 
+    Square.extends(Polygon);
     
-    Square.extends(Polygon); // give Squares access to Polygon shared properties & this.super() 
     function Square (width) {
         this.super(width, width);
     }
+    
+    
+&nbsp;Square's prototype looks like this:
+
+        {
+            super: fn(w, h) {
+                // Polygon's constructor, will set height and width as own properties on a new Square
+            },
+            __proto__: Polygon.prototype
+        }
+
+
+
+&nbsp;And a new Square(5) looks like this:
+
+        {
+            width: 5,
+            height: 5
+        }
+
+&nbsp;With access to the entire chain of extended shared properties:
+
+        new Square(5).area(); // 25
+
+&nbsp;Properties can be overridden as own properties in the extended constructor, or as shared properties:
+
+        Triangle.extends(Polygon);
+        
+        function Triangle(w, h) {
+            this.super(w, h);
+            this.ownProp = 'example';
+        }
+        Triangle.prototype.area = function () {
+            return this.width * this.height / 2;
+        }
