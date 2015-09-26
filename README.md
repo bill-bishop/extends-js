@@ -50,14 +50,15 @@ Javascript Inheritance -- in a single function. Better than what you've seen els
 
         new Square(5).area(); // 25
 
-&nbsp;Properties can be overridden as own properties in the extended constructor, or as shared properties:
+&nbsp;Inherited shared properties can be overridden as own properties in the extended constructor, or as shared properties on the extended prototype
 
         Triangle.extends(Polygon);
         
         function Triangle(w, h) {
             this.super(w, h);
-            this.ownProp = 'example';
         }
+        
+        // override
         Triangle.prototype.area = function () {
-            return this.width * this.height / 2;
+            return this.width * this.height / 2; 
         }
