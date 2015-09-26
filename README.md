@@ -56,9 +56,11 @@ Inherited shared properties can be overridden as own properties in the extended 
         
         function Triangle(w, h) {
             this.super(w, h);
+            
+            this.area = function () { return 0; }; // override via own property
         }
         
-        // override
+        // override via Triangle's prototype (will be called only if not overridden via own property) 
         Triangle.prototype.area = function () {
             return this.width * this.height / 2; 
         }
