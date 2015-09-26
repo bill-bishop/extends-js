@@ -30,7 +30,7 @@ Javascript Inheritance -- in a single function. Better than what you've seen els
 &nbsp;Square's prototype looks like this:
 
         {
-            super: fn(w, h) {
+            super: function (w, h) {
                 // Polygon's constructor, will set height and width as own properties on a new Square
             },
             __proto__: Polygon.prototype
