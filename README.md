@@ -60,7 +60,7 @@ Prototypally inherited properties can be overridden as own properties or via the
             this.area = function () { return 0; }; // override via own property
         }
         
-        // override via Triangle's prototype (will be called only if not overridden via own property) 
+        // override via Triangle's prototype, will be called only if not overridden via own property
         Triangle.prototype.area = function () {
             return this.width * this.height / 2; 
         }
