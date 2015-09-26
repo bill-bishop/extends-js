@@ -9,7 +9,7 @@ Javascript Inheritance -- in a single function. Better than what you've seen els
         };
 
 
-&nbsp;Usage:
+Usage:
 
         function Polygon (w, h) {
             this.width = w;
@@ -27,7 +27,7 @@ Javascript Inheritance -- in a single function. Better than what you've seen els
         }
     
     
-&nbsp;Square's prototype looks like this:
+Square's prototype looks like this:
 
         {
             super: function (w, h) {
@@ -39,18 +39,18 @@ Javascript Inheritance -- in a single function. Better than what you've seen els
 
 
 
-&nbsp;And a new Square(5) looks like this:
+And a new Square(5) looks like this:
 
         {
             width: 5,
             height: 5
         }
 
-&nbsp;With access to the entire chain of extended shared properties:
+With access to the entire chain of extended shared properties:
 
         new Square(5).area(); // 25
 
-&nbsp;Inherited shared properties can be overridden as own properties in the extended constructor, or as shared properties on the extended prototype
+Inherited shared properties can be overridden as own properties in the extended constructor, or as shared properties on the extended prototype
 
         Triangle.extends(Polygon);
         
