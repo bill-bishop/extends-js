@@ -31,7 +31,8 @@ Javascript Inheritance -- in a single function. Better than what you've seen els
 
         {
             super: function (w, h) {
-                // Polygon's constructor, will set height and width as own properties on a new Square
+                // this will set height and width as own properties on a new Square,
+                // via the actual constructor for Polygons
             },
             __proto__: Polygon.prototype
         }
