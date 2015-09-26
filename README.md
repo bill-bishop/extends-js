@@ -50,7 +50,7 @@ With access to the entire chain of extended shared properties:
 
         new Square(5).area(); // 25
 
-Inherited shared properties can be overridden as own properties in the extended constructor, or as shared properties on the extended prototype
+Prototypally inherited properties can be overridden as own properties or via the extended prototype.
 
         Triangle.extends(Polygon);
         
