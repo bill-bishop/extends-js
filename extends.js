@@ -6,8 +6,12 @@
  */
 
 Function.prototype.extends = function (o) {
-    this.prototype = Object.create(o.prototype);
+    var proto = this.prototype, extending = o.prototype;
+    Object.setPrototypeOf(proto, extending);
     this.prototype.super = function () {
-        o.prototype.constructor.apply(this, arguments);
+        var fn = proto.super;
+        delete proto.super;
+        extending.constructor.apply(this, arguments);
+        proto.super = fn;
     };
 };
