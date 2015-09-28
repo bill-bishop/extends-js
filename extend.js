@@ -1,5 +1,5 @@
 /*
- *  extends
+ *  extend-js
  *
  *  usage:
  *  Class1.extends(Class2)
