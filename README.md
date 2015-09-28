@@ -1,4 +1,4 @@
-# extends
+# extend-js
 Javascript Inheritance -- in a single function. Better than what you've seen elsewhere. Just add extends.js to your shims, or simply paste it into your code:
 
         Function.prototype.extends = function (o) {
