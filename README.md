@@ -1,9 +1,11 @@
 # extends-js
-Javascript Inheritance -- in a single function. Better than what you've seen elsewhere.
+Javascript Inheritance -- the right way. Better than what you've seen elsewhere.
 
 To use in the browser, just add extend.js to your project:
 
         <script src="extend.js"></script>
+
+
 
 
 To use in your node projects, install via npm:
@@ -16,7 +18,30 @@ And simply require it anywhere in your program before using the extends syntax:
         var extend = require('extends-js');
 
 
-Example:
+# What's different about extends-js?
+
+Other Javascript Inheritance libraries you will find online do several things wrong:
+
+1. Abandoning JS Object definitions - I don't want my code cluttered with this:
+
+        // BAD!! 
+        var Person = ArbitraryInheritanceLibrary.extend({ /* arbitrary object definition conforming to the library syntax */ })
+        
+        // GOOD!
+        Person.extends(Animal); // extends-js syntax doesn't get in the way of normal Object syntax!
+        function Person (name) {
+                this.name = name; 
+        }
+
+extends-js leverages the proper, normal way of Object/constructor creation in Javascript and doesn't require you to define your constructors in a special way. 
+
+2. Abandoning prototype chains - I don't want my object instances cluttered with own properties that are endlessly copied down through the inheritance chain! extends-js respects both Own Properties and Prototypal Properties and does not confuse them. 
+
+3. Poor or missing super constructor implementation - I don't want to re-write my constructors over and over! I want to be able to super() to the constructor of the class being extended, WITHOUT having to define my constructors in a special way! extends-js utilizes the actual constructors of your normal Javascript objects! 
+
+
+
+#Examples
 
         function Polygon (w, h) {
             this.width = w;
