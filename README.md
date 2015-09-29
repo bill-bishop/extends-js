@@ -73,15 +73,19 @@ Other Javascript Inheritance libraries online do several things <b>wrong</b>:
 Mistake #1: <b>Abandoning normal Javascript constructor syntax</b> - I don't want my code cluttered with this:
 
         // BAD!! 
-        var Person = ArbitraryInheritanceLibrary.extend({ /* arbitrary object definition conforming to the library syntax */ })
+        var Person = ArbitraryInheritanceLibrary.extend({
+                /* arbitrary object definition conforming to the library syntax */
+        })
         
         // GOOD!
-        Person.extends(Animal); // extends-js syntax doesn't get in the way of normal Object syntax!
+        Person.extends(Animal);
+
+        // extends-js doesn't get in the way of normal Object syntax!
         function Person (name) {
                 this.name = name; 
         }
 
-extends-js leverages the proper, normal way of Object/constructor creation in Javascript and doesn't require you to define your constructors in a special way. 
+extends-js leverages normal Object constructors in Javascript and doesn't require you to define your constructors in a special way.
 
 Mistake #2: <b>Abandoning prototype chains</b> - I don't want my object instances cluttered with own properties that are endlessly copied down through the inheritance chain! extends-js respects both Own Properties and Prototypal Properties and does not confuse them. 
 
@@ -92,8 +96,8 @@ Mistake #3: <b>Poor or missing super constructor implementation</b> - I don't wa
 #Compatibility
 
 To support IE8 or compatibility with other plugins, the 'extends' and 'super' functions can
-be prefixed with an arbitrary value (defaults to '$') with extend.noConflict(), allowing them
-to be used as '$extends' and '$super'
+be prefixed with an arbitrary value (defaults to '$') by calling extend.noConflict(),
+allowing them to be called via '$extends' and '$super'
 
         // $extends() and $super(), the default noConflict settings
         extend.noConflict();
