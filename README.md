@@ -95,7 +95,7 @@ There is no reason to throw out normal Javascript object syntax just to achieve 
 
 extends-js leverages normal Object constructors in Javascript and doesn't require you to define your constructors in a special way.
 
-Mistake #2: <b>Abandoning prototype chains</b> - I don't want my object instances cluttered with own properties that are endlessly copied down through the inheritance chain! extends-js respects both Own Properties and Prototypal Properties and does not confuse them. 
+Mistake #2: <b>Abandoning prototype chains</b> - I don't want my object instances cluttered with own properties that are endlessly copied down through the inheritance chain! I want <b>instanceof</b> to be useful! extends-js respects both Own Properties and Prototypal Properties and does not confuse them. extend-js relates the constructors prototypally in the proper way, such that they really are instances of the super class!
 
 Mistake #3: <b>Poor or missing super constructor implementation</b> - I don't want to re-write my constructors over and over! I want to be able to super() to the constructor of the class being extended, WITHOUT having to define my constructors in a special way! extends-js utilizes the actual constructors of your normal Javascript objects and gives extended Objects access to those constructors via this.super()! 
 
