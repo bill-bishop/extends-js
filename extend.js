@@ -26,8 +26,8 @@ var extend = (function () {
                 };
             };
             extended.prototype = extending;
-            for(var prop in proto) {
-                if(proto.hasOwnProperty(prop)) {
+            for (var prop in proto) {
+                if (proto.hasOwnProperty(prop)) {
                     extended.prototype[prop] = proto[prop];
                 }
             }
@@ -44,4 +44,4 @@ var extend = (function () {
     };
 })();
 
-extend.noConflict();
+if (typeof module === 'object') module.exports = extend;
