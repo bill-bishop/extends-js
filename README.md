@@ -50,6 +50,12 @@ With access to the entire chain of extended shared properties:
 
         new Square(5).area(); // 25
 
+<b>instanceof</b> works normally as these Objects are prototypally related in the proper way:
+
+        (new Square(5)) instanceof Square // true
+        (new Square(5)) instanceof Polygon // true
+        (new Square(5)) instanceof Object // true
+
 
 Prototypally inherited properties can be overridden as own properties or via the extended prototype.
 
