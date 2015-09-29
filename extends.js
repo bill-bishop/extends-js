@@ -14,25 +14,23 @@
 var extend = (function () {
     var extendsFnName = 'extends', superFnName = 'super', noConflict = '';
     Function.prototype[noConflict + extendsFnName] = function (o) {
-        this.prototype = (function (extender, extending) {
-            var proto = extender.prototype;
-            var extended = function () {
-                this.constructor = proto.constructor;
-                this[noConflict + superFnName] = function () {
-                    var fn = extender.prototype[noConflict + superFnName];
-                    delete extender.prototype[noConflict + superFnName];
-                    extending.constructor.apply(this, arguments);
-                    extender.prototype[noConflict + superFnName] = fn;
-                };
+        var proto = this.prototype;
+        function ExtendedPrototype () {
+            this.constructor = proto.constructor;
+            this[noConflict + superFnName] = function () {
+                var fn = proto[noConflict + superFnName];
+                delete proto[noConflict + superFnName];
+                o.apply(this, arguments);
+                proto[noConflict + superFnName] = fn;
             };
-            extended.prototype = extending;
-            for (var prop in proto) {
-                if (proto.hasOwnProperty(prop)) {
-                    extended.prototype[prop] = proto[prop];
-                }
+        }
+        ExtendedPrototype.prototype = o.prototype;
+        for(var prop in proto) {
+            if(proto.hasOwnProperty(prop)) {
+                ExtendedPrototype.prototype[prop] = proto[prop];
             }
-            return new extended;
-        })(this, o.prototype);
+        }
+        this.prototype = new ExtendedPrototype;
     };
     return {
         noConflict: function (str) {
