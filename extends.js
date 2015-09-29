@@ -25,13 +25,14 @@ var extend = (function () {
                 SuperConstructor.apply(this, arguments);
                 extender.prototype[noConflict + superFnName] = fn;
             };
-        }
-        ExtendedPrototype.prototype = SuperConstructor.prototype;
-        for(var prop in extender.prototype) {
-            if(extender.prototype.hasOwnProperty(prop)) {
-                ExtendedPrototype.prototype[prop] = extender.prototype[prop];
+
+            for(var prop in extender.prototype) {
+                if(extender.prototype.hasOwnProperty(prop)) {
+                    this[prop] = extender.prototype[prop];
+                }
             }
         }
+        ExtendedPrototype.prototype = SuperConstructor.prototype;
         this.prototype = new ExtendedPrototype();
     };
     return {
