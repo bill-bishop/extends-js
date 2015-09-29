@@ -6,3 +6,5 @@
 .idea/.name
 
 .idea/extend-js.iml
+
+node_modules
