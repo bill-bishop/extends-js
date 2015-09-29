@@ -1,8 +1,8 @@
 {
   "name": "extends-js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Javascript Inheritance",
-  "main": "extend.js",
+  "main": "extends.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
