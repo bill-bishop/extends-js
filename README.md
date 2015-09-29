@@ -1,9 +1,19 @@
 # extends-js
 Javascript Inheritance -- in a single function. Better than what you've seen elsewhere.
 
-To use, just add extend.js to your project:
+To use in the browser, just add extend.js to your project:
 
         <script src="extend.js"></script>
+
+
+To use in your node projects, install via npm:
+
+        npm install extends-js
+
+
+And simply require it anywhere in your program before using the extends syntax:
+
+        var extend = require('extends-js');
 
 
 Example:
@@ -57,7 +67,8 @@ Prototypally inherited properties can be overridden as own properties or via the
 
 
 To support IE8 or compatibility with other plugins, the 'extends' and 'super' functions can
-be prefixed with arbitrary values (defaults to $) and can be used as '$extend' and '$super':
+be prefixed with an arbitrary value (defaults to '$') with extend.noConflict(), allowing them
+to be used as '$extends' and '$super'
 
         // $extends() and $super(), the default noConflict settings
         extend.noConflict();
