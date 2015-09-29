@@ -44,4 +44,4 @@ var extendsJs = (function () {
     };
 })();
 
-if (typeof module === 'object') module.exports = extend;
+if (typeof module === 'object') module.exports = extendsJs;

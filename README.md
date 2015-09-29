@@ -1,9 +1,9 @@
 # extends-js
 Javascript Inheritance -- in a single function. Better than what you've seen elsewhere.
 
-To use, just add extends-js.js to your project:
+To use, just add extend.js to your project:
 
-        <script src="extends-js.js"></script>
+        <script src="extend.js"></script>
 
 
 Example:
