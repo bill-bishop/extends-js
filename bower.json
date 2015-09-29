@@ -1,0 +1,23 @@
+{
+  "name": "extend-js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/william-mcmillian/extend-js",
+  "authors": [
+    "william-mcmillian <admin@the402.net>"
+  ],
+  "description": "Javascript Inheritance",
+  "main": "extend.js",
+  "moduleType": [],
+  "keywords": [
+    "javascript",
+    "js",
+    "inheritance",
+    "extend",
+    "extends",
+    "extend-js",
+    "oop",
+    "object",
+    "oriented"
+  ],
+  "license": "MIT"
+}
