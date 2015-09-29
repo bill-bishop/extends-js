@@ -1,6 +1,6 @@
 {
   "name": "extends-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Javascript Inheritance",
   "main": "extend.js",
   "scripts": {

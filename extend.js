@@ -11,7 +11,7 @@
  *
  */
 
-var extendsJs = (function () {
+var extend = (function () {
     var extendsFnName = 'extends', superFnName = 'super', noConflict = '';
     Function.prototype[noConflict + extendsFnName] = function (o) {
         this.prototype = (function (extender, extending) {
@@ -44,4 +44,4 @@ var extendsJs = (function () {
     };
 })();
 
-if (typeof module === 'object') module.exports = extendsJs;
+if (typeof module === 'object') module.exports = extend;
