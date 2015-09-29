@@ -2,6 +2,7 @@
 Javascript Inheritance -- in a single function. Better than what you've seen elsewhere.
 
 To use, just add extend.js to your project:
+
         <script src="extend.js"></script>
 
 
