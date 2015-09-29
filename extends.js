@@ -11,7 +11,7 @@
  *
  */
 
-var extend = (function () {
+var extendsJs = (function () {
     var extendsFnName = 'extends', superFnName = 'super', noConflict = '';
     Function.prototype[noConflict + extendsFnName] = function (o) {
         this.prototype = (function (extender, extending) {
