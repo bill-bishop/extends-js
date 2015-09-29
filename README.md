@@ -1,19 +1,11 @@
 # extend-js
-Javascript Inheritance -- in a single function. Better than what you've seen elsewhere. Just add extends.js to your shims, or simply paste it into your code:
+Javascript Inheritance -- in a single function. Better than what you've seen elsewhere.
 
-        Function.prototype.extends = function (o) {
-            var proto = this.prototype, extending = o.prototype;
-            Object.setPrototypeOf(proto, extending);
-            this.prototype.super = function () {
-                var fn = proto.super;
-                delete proto.super;
-                extending.constructor.apply(this, arguments);
-                proto.super = fn;
-            };
-        };
+To use, just add extend.js to your project:
+        <script src="extend.js"></script>
 
 
-Usage:
+Example:
 
         function Polygon (w, h) {
             this.width = w;
@@ -23,27 +15,18 @@ Usage:
             return this.width * this.height; 
         }
         
-        // give Squares access to Polygon shared properties & this.super() 
+        // give Squares access to Polygon shared (prototypal) properties & this.super()
         Square.extends(Polygon);
-        
+
+        // this.super() applies Polygon's constructor to new Squares, setting height and width as own properties
         function Square (width) {
             this.super(width, width);
         }
-    
-    
-Square's prototype looks like this:
-
-        {
-            super: function (w, h) {
-                // this will set height and width as own properties on a new Square,
-                // via the actual constructor for Polygons
-            },
-            __proto__: Polygon.prototype
-        }
 
 
 
-And a new Square(5) looks like this:
+
+A new Square(5) looks like this:
 
         {
             width: 5,
@@ -53,6 +36,7 @@ And a new Square(5) looks like this:
 With access to the entire chain of extended shared properties:
 
         new Square(5).area(); // 25
+
 
 Prototypally inherited properties can be overridden as own properties or via the extended prototype.
 
@@ -68,3 +52,15 @@ Prototypally inherited properties can be overridden as own properties or via the
         Triangle.prototype.area = function () {
             return this.width * this.height / 2; 
         }
+
+
+
+To support IE8 or compatibility with other plugins, the 'extends' and 'super' functions can
+be prefixed with arbitrary values (defaults to $) and can be used as '$extend' and '$super':
+
+        // $extends() and $super(), the default noConflict settings
+        extend.noConflict();
+        extend.noConflict('$');
+
+        // __extends() and __super()
+        extend.noConflict('__');
