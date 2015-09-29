@@ -8,3 +8,5 @@
 .idea/extend-js.iml
 
 node_modules
+
+npm-debug.log
