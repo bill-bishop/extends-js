@@ -76,11 +76,13 @@ Mistake #1: <b>Abandoning normal Javascript constructor syntax</b> - I don't wan
         var Person = ArbitraryInheritanceLibrary.extend({
                 /* arbitrary object definition conforming to the library syntax */
         })
+
+There is no reason to throw out normal Javascript object syntax just to achieve inheritance:
         
-        // GOOD!
+        // GOOD! extends-js doesn't get in the way of normal Object syntax!
         Person.extends(Animal);
 
-        // extends-js doesn't get in the way of normal Object syntax!
+        // plain old constructor!
         function Person (name) {
                 this.name = name; 
         }
