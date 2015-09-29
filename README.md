@@ -1,9 +1,9 @@
 # extends-js
 Javascript Inheritance -- the right way. Better than what you've seen elsewhere.
 
-To use in the browser, just add extend.js to your project:
+To use in the browser, just add extends.js to your project:
 
-        <script src="extend.js"></script>
+        <script src="extends.js"></script>
 
 
 
