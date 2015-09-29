@@ -13,24 +13,27 @@
 
 var extend = (function () {
     var extendsFnName = 'extends', superFnName = 'super', noConflict = '';
-    Function.prototype[noConflict + extendsFnName] = function (o) {
-        var proto = this.prototype;
+    Function.prototype[noConflict + extendsFnName] = function (SuperConstructor) {
+        var extender = this, extending = SuperConstructor.prototype;
         function ExtendedPrototype () {
-            this.constructor = proto.constructor;
+            this.constructor = extender.prototype.constructor;
             this[noConflict + superFnName] = function () {
-                var fn = proto[noConflict + superFnName];
-                delete proto[noConflict + superFnName];
-                o.apply(this, arguments);
-                proto[noConflict + superFnName] = fn;
+                console.log('supering', extender, SuperConstructor);
+                var fn = extender.prototype[noConflict + superFnName];
+                if(extending[noConflict + superFnName])  {
+                    extender.prototype[noConflict + superFnName] = extending[noConflict + superFnName];
+                }
+                SuperConstructor.apply(this, arguments);
+                extender.prototype[noConflict + superFnName] = fn;
             };
         }
-        ExtendedPrototype.prototype = o.prototype;
-        for(var prop in proto) {
-            if(proto.hasOwnProperty(prop)) {
-                ExtendedPrototype.prototype[prop] = proto[prop];
+        ExtendedPrototype.prototype = SuperConstructor.prototype;
+        for(var prop in extender.prototype) {
+            if(extender.prototype.hasOwnProperty(prop)) {
+                ExtendedPrototype.prototype[prop] = extender.prototype[prop];
             }
         }
-        this.prototype = new ExtendedPrototype;
+        this.prototype = new ExtendedPrototype();
     };
     return {
         noConflict: function (str) {
