@@ -61,11 +61,11 @@ Since extend-js is inheritance "the proper Javascript way," you can extend nativ
         List.extends(Array);
         
         function List () {
-                this.super();
+                this.super.apply(this, arguments); // pass all arguments through to super constructor
         }
         
-        var myList = new List();
-        myList.push('why has JS inheritance not always been taught this way?');
+        var myList = new List('why has JS inheritance not always been implemented this way?');
+        myList.push('It has now. That is all that matters.');
         myList.forEach(function (e, i) { console.log(i, e); });
 
 
