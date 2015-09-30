@@ -24,11 +24,8 @@ var extend = (function () {
                 }
 
                 superResult = SuperConstructor.apply(this, arguments);
-                if(superResult && superResult.forEach) {
-                    var self = this;
-                    superResult.forEach(function (e) {
-                        self.push(e);
-                    });
+                if(superResult && superResult.length > 0 && arguments.length > 0 && this.length === 0) {
+                    this.push.apply(this, superResult);
                 }
                 extender.prototype[noConflict + superFnName] = fn;
             };
