@@ -56,6 +56,18 @@ With access to the entire chain of extended shared properties:
         (new Square(5)) instanceof Polygon // true
         (new Square(5)) instanceof Object // true
 
+Since extend-js is inheritance "the proper Javascript way," you can extend native classes normally:
+
+        List.extends(Array);
+        
+        function List () {
+                this.super();
+        }
+        
+        var myList = new List();
+        myList.push('why has JS inheritance not always been taught this way?');
+        myList.forEach(function (e, i) { console.log(i, e); });
+
 
 Prototypally inherited properties can be overridden as own properties or via the extended prototype.
 
