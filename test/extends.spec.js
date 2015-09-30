@@ -35,6 +35,10 @@ describe('extends-js', function () {
     SquareFoot.prototype.retain = true;
     SquareFoot.extends(Square);
 
+    function MyList () {
+        this.super.apply(this, arguments);
+    }
+    MyList.extends(Array);
 
     describe('Square (extended Polygon)', function () {
         var s = new Square(5);
@@ -75,6 +79,18 @@ describe('extends-js', function () {
         it('should have access to Polygon prototype functions', function () {
             expect(sf.hasOwnProperty('area')).to.be(false);
             expect(sf.area()).to.be(1);
+        });
+    });
+
+    describe('Native classes', function () {
+        it('should be extendable', function () {
+            var myList = new MyList(1, 2, 3);
+            myList.push('qwerty');
+            expect(myList.forEach).to.be.ok();
+            expect(myList.hasOwnProperty('forEach')).to.be(false);
+            expect(myList.length).to.be(4);
+            expect(myList[0]).to.be(1);
+            expect(myList[3]).to.be('qwerty');
         });
     });
 

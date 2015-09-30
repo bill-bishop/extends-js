@@ -18,11 +18,18 @@ var extend = (function () {
         function ExtendedPrototype () {
             this.constructor = extender.prototype.constructor;
             this[noConflict + superFnName] = function () {
-                var fn = extender.prototype[noConflict + superFnName];
+                var superResult, fn = extender.prototype[noConflict + superFnName];
                 if(extending[noConflict + superFnName])  {
                     extender.prototype[noConflict + superFnName] = extending[noConflict + superFnName];
                 }
-                SuperConstructor.apply(this, arguments);
+
+                superResult = SuperConstructor.apply(this, arguments);
+                if(superResult && superResult.forEach) {
+                    var self = this;
+                    superResult.forEach(function (e) {
+                        self.push(e);
+                    });
+                }
                 extender.prototype[noConflict + superFnName] = fn;
             };
 
